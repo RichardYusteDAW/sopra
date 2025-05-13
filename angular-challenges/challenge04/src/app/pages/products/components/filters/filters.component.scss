@@ -1,0 +1,8 @@
+.list-group-item {
+  cursor: pointer;
+}
+
+.btn:active,
+.list-group-item:active {
+  transform: scale(0.95);
+}

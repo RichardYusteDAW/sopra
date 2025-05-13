@@ -1,0 +1,63 @@
+<div class="container mt-5">
+  <div class="row">
+    <app-filters
+      class="col-12 col-md-3"
+      [productsData]="productsData"
+      (selectedProductEvent)="selectProduct($event)"
+    >
+    </app-filters>
+
+    <main
+      *ngIf="productsData.length > 0"
+      class="col-12 col-md-9"
+      [ngClass]="
+        product?.favorite ? 'bg-secondary text-white' : 'bg-light text-dark'
+      "
+    >
+      <app-product
+        *ngIf="product"
+        [product]="product"
+        (toggleFavoriteEvent)="toggleFavorite($event)"
+        (deleteProductEvent)="deleteProduct($event)"
+      >
+      </app-product>
+
+      <section id="similar-products" class="mt-5">
+        <h3>Similar Products</h3>
+        <div
+          id="similar-products-list"
+          class="d-flex flex-column flex-md-row justify-content-start align-items-start gap-3 flex-wrap"
+        >
+          <div
+            id="card"
+            class="d-flex justify-content-between align-items-center gap-3"
+            *ngFor="let product of similarProducts"
+            (click)="openModal(product)"
+          >
+            <app-product-card [product]="product"></app-product-card>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews" class="mt-5">
+        <h3>Reviews</h3>
+        <div id="reviews-list" class="d-flex flex-column gap-3">
+          <div
+            id="review-card"
+            class="d-flex flex-column flex-lg-row justify-content-between align-items-start gap-3"
+            *ngFor="let review of reviews"
+          >
+            <app-review-card
+              *ngIf="product"
+              [product]="product"
+              [review]="review"
+            ></app-review-card>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <app-product-dialog #productDialog [modalProduct]="modalProduct">
+  </app-product-dialog>
+</div>

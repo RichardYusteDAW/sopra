@@ -1,0 +1,5 @@
+Este código tiene áreas que pueden mejorarse refactorizando y aplicando los principios solid.
+ - Refactoriza el código lo que necesites para aplicar tantos principios como puedas.
+ 
+ 
+Se debe de mostrar por consola toda la información necesaria de los animales dog, cat, duck y chicken.

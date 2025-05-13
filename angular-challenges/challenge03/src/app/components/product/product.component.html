@@ -1,0 +1,33 @@
+<div
+  class="w-100 d-flex flex-column flex-md-row justify-content-center align-items-start gap-3"
+>
+  <img
+    src="https://placehold.co/400x600"
+    alt="product"
+    class="col-12 col-md-6"
+  />
+
+  <div
+    id="text"
+    class="col-12 col-md-6 d-flex flex-column justify-content-between align-items-start"
+  >
+    <div class="w-100 d-flex justify-content-between align-items-start">
+      <h1>{{ product.name }}</h1>
+      <i
+        class="fa-heart fa-2x"
+        [ngClass]="{
+          'fa-solid text-danger': product.favorite,
+          'fa-regular': !product.favorite
+        }"
+        (click)="toggleFavorite()"
+      ></i>
+    </div>
+    <app-stars [product]="product"></app-stars>
+    <hr />
+    <h2>$ {{ product.price }}</h2>
+    <p>{{ product.description }}</p>
+    <button class="btn btn-danger" (click)="deleteProduct(product.name)">
+      Delete
+    </button>
+  </div>
+</div>

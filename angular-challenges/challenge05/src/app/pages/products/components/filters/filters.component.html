@@ -1,0 +1,32 @@
+<div class="d-flex flex-column gap-5 mb-5">
+  <div id="buttons" class="d-flex flex-column gap-3">
+    <button
+      [ngClass]="filteredPrice ? 'btn btn-secondary' : 'btn btn-success'"
+      (click)="onFilterPriceLowerThan(maximumPrice)"
+    >
+      Filter: (Price < $2000)
+    </button>
+    <button
+      [ngClass]="filteredRating ? 'btn btn-secondary' : 'btn btn-success'"
+      (click)="onFilterRatingGreaterThan(minimumRating)"
+    >
+      Filter: (Rating > 4)
+    </button>
+    <button class="btn btn-outline-success" (click)="onRemoveFilter()">
+      Reset Filter
+    </button>
+  </div>
+
+  <div id="products d-flex flex-column">
+    <h3>Products</h3>
+    <ul class="list-group">
+      <li
+        *ngFor="let productData of filteredProducts"
+        class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center py-3"
+        (click)="onSelectProduct(productData)"
+      >
+        {{ productData.name }}<span class="fw-bold">&gt;</span>
+      </li>
+    </ul>
+  </div>
+</div>

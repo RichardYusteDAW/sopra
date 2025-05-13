@@ -1,0 +1,14 @@
+Este código tiene áreas que pueden mejorarse refactorizando código repetido y simplificando lógica.
+ - Eliminar código repetido: Identifica patrones de repetición y busca maneras de eliminar esa repetición utilizando funciones o estructuras de datos que considered más adecuadas.
+ - Simplificar lógicas de control: Busca maneras de simplificar las declaraciones if-else y switch para hacer el código más claro y legible.
+ - Encapsulamiento de operaciones: Evalúa si es posible encapsular la lógica de las operaciones en funciones separadas para hacer el código más modular.
+ - Aplica todos los cambios que consideres para hacer más entendible el código, aporta el contexto que consideres que falta; en naming, funciones, etc visto en las diapositivas.
+
+
+ Una vez tengas el código refactorizado, haz que aparezca por consola, modificando la calculadora y utilizando todas las operaciones de la calcuadora (sumar, restar, multiplicar y dividir):
+  - a la calculadora se le introduce comoo parámetro un 5, devuelve un 18.
+  - a la calculadora se le introduce comoo parámetro un 10, devuelve un 14,5.
+
+Puedes crear tantas fuciones y variables como consideres oportunas.
+
+BONUS: Aplica gestión de errores, como puedes controlar los errores de manera más consistente y clara, evitando la impresión directa por consola.

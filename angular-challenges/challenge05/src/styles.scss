@@ -1,0 +1,29 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+app-root {
+  min-height: 100vh;
+}
+
+.text-orange {
+  color: orange;
+}
+
+.text-gold {
+  color: gold;
+}
+
+#card {
+  cursor: pointer;
+}
+
+#card:active {
+  transform: scale(0.95);
+}

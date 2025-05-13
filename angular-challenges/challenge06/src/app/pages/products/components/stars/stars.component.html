@@ -1,0 +1,10 @@
+<div *ngIf="product" id="stars">
+  <i
+    *ngFor="
+      let starClass of generateStarClassArray(product.rating);
+      let i = index
+    "
+    [class]="starClass"
+    (click)="onStarClick(i)"
+  ></i>
+</div>

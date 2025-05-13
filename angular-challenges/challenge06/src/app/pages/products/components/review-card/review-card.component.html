@@ -1,0 +1,13 @@
+<img src="https://placehold.co/50x50" alt="user" class="col-1 rounded-circle" />
+<div
+  id="review-data"
+  class="col-3 d-flex flex-column justify-content-between text-nowrap"
+>
+  <div>{{ review?.name }}</div>
+  <div>{{ review?.date }}</div>
+  <div id="stars">
+    <app-stars *ngIf="product" [product]="product"></app-stars>
+  </div>
+</div>
+
+<p id="review-opinion" class="col-8">{{ review?.opinion }}</p>

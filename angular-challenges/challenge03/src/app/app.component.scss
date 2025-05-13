@@ -1,0 +1,7 @@
+#card {
+  cursor: pointer;
+}
+
+#card:active {
+  transform: scale(0.95);
+}

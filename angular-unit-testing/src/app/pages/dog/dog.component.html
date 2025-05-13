@@ -1,0 +1,16 @@
+<h1>Perros</h1>
+
+<div class="select-container">
+  <select (change)="onChange($event)">
+    <option value="null">Selecciona una raza</option>
+    <option *ngFor="let breed of breeds" [value]="breed">
+      {{ breed }}
+    </option>
+  </select>
+</div>
+
+<div class="images-container">
+  <div class="image-content" *ngFor="let image of images">
+    <img [src]="image" alt="Perro" />
+  </div>
+</div>

@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","mappings":";;;;AAAA,CAAC;IACC,OAAO,CAAC,GAAG,CAAC,MAAM,CAAC,CAAC;AACtB,CAAC,CAAC,EAAE,CAAC","sources":["webpack://practica/./src/index.ts"],"sourcesContent":["(() => {\n  console.log(\"hola\");\n})();\n"],"names":[],"sourceRoot":""}

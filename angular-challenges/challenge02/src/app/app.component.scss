@@ -1,0 +1,15 @@
+#logo {
+  height: 2rem;
+  width: 2rem;
+}
+
+#card,
+.list-group-item {
+  cursor: pointer;
+}
+
+#card:active,
+.btn:active,
+.list-group-item:active {
+  transform: scale(0.95);
+}

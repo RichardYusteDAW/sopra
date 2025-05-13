@@ -1,0 +1,12 @@
+:host {
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 300px;
+}
+
+.breed-info {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

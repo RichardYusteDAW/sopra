@@ -1,0 +1,24 @@
+<div
+  class="w-100 d-flex justify-content-between align-items-center gap-3 bg-white border rounded-3 p-3"
+>
+  <img class="p-3" src="https://placehold.co/125x75" [alt]="product?.name" />
+  <div class="w-100">
+    <h3 class="fw-bold">{{ product?.name }}</h3>
+    <p class="text-truncate" style="max-width: 250px">
+      {{ product?.description }}
+      Price: {{ product?.description }}
+    </p>
+  </div>
+  <div class="d-flex flex-column justify-content-between align-items-center">
+    <p>
+      <i
+        class="fa-heart fa-2x"
+        [ngClass]="{
+          'fa-solid text-danger': product?.favorite,
+          'fa-regular': !product?.favorite
+        }"
+      ></i>
+    </p>
+    <p>{{ product?.price }}</p>
+  </div>
+</div>

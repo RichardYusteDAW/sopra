@@ -1,0 +1,15 @@
+<app-subscribe></app-subscribe>
+<section
+  id="descriptions"
+  class="d-flex flex-column justify-content-center align-items-center mt-3"
+>
+  <h2>About Us</h2>
+  <div class="row">
+    <app-description
+      *ngFor="let description of descriptions"
+      class="col-12 col-md-6 d-flex flex-column align-items-start gap-2 p-5"
+      [description]="description"
+    ></app-description>
+  </div>
+</section>
+<app-contact></app-contact>

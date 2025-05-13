@@ -1,0 +1,240 @@
+<header class="container">
+  <nav class="navbar navbar-expand-md">
+    <img id="logo" src="../../../assets/logo.png" alt="logo" />
+
+    <button
+      class="navbar-toggler ms-auto"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <div
+        class="w-100 d-flex flex-column flex-md-row justify-content-end align-items-end align-items-md-center gap-3"
+      >
+        <ul
+          class="navbar-nav d-flex justify-content-between align-items-center gap-3"
+        >
+          <li class="nav-item">
+            <a class="nav-link active" href="/">Home</a>
+          </li>
+          <span class="fw-bold d-none d-md-inline">|</span>
+          <li class="nav-item">
+            <a class="nav-link active" href="/about">About</a>
+          </li>
+          <span class="fw-bold d-none d-md-inline">|</span>
+          <li class="nav-item">
+            <a class="nav-link active" href="/shop">Shop</a>
+          </li>
+          <span class="fw-bold d-none d-md-inline">|</span>
+          <li class="nav-item">
+            <a class="nav-link active" href="/help">Help</a>
+          </li>
+        </ul>
+
+        <button class="btn btn-primary" type="submit">
+          <i class="fa-solid fa-cart-shopping"></i> Your Cart
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container mt-5">
+  <div class="row">
+    <aside class="col-12 col-md-3 d-flex flex-column gap-3">
+      <div id="buttons" class="d-flex flex-column gap-3">
+        <button
+          class="btn btn-success"
+          (click)="filterProductPriceLowerThan(2000)"
+          [disabled]="filteredPrice"
+        >
+          Filter: (Price < $2000)
+        </button>
+        <button
+          class="btn btn btn-success"
+          (click)="filterProductRatingGreaterThan(4)"
+          [disabled]="filteredRating"
+        >
+          Filter: (Rating > 4)
+        </button>
+        <button class="btn btn-outline-success" (click)="removeFilter()">
+          Reset Filter
+        </button>
+      </div>
+
+      <div id="products d-flex flex-column">
+        <h3>Products</h3>
+        <ul class="list-group">
+          <li
+            *ngFor="let product of productsData; let i = index"
+            class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center py-3"
+            (click)="findProductByPosition(i)"
+          >
+            Product {{ i + 1 }}
+            <!-- product.name -->
+            <span class="fw-bold">&gt;</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="col-12 col-md-9">
+      <section
+        id="product"
+        class="w-100 d-flex flex-column flex-md-row justify-content-center align-items-start gap-3"
+      >
+        <img
+          src="https://placehold.co/400x600"
+          alt="product"
+          class="col-12 col-md-6"
+        />
+
+        <div
+          id="text"
+          class="col-12 col-md-6 d-flex flex-column justify-content-between align-items-start"
+        >
+          <h1>{{ product.name }}</h1>
+          <div id="stars">
+            <i
+              *ngFor="let starClass of generateStarClassArray(product.rating)"
+              [class]="starClass"
+            ></i>
+          </div>
+          <hr />
+          <h2>$ {{ product.price }}</h2>
+          <p>{{ product.description }}</p>
+          <button class="btn btn-danger" (click)="deleteProduct(product.name)">
+            Delete
+          </button>
+        </div>
+      </section>
+
+      <dialog #productDialog class="col-6">
+        <div
+          class="d-flex flex-column flex-md-row justify-content-center align-items-start gap-3"
+        >
+          <img
+            src="https://placehold.co/400x600"
+            alt="product"
+            class="col-12 col-md-6"
+          />
+
+          <div
+            class="col-12 col-md-6 d-flex flex-column justify-content-between align-items-start"
+          >
+            <h1>{{ modalProduct?.name }}</h1>
+            <div id="stars">
+              <i
+                *ngFor="
+                  let starClass of generateStarClassArray(
+                    modalProduct?.rating || 0
+                  )
+                "
+                [class]="starClass"
+              ></i>
+            </div>
+            <hr />
+            <h2>$ {{ modalProduct?.price }}</h2>
+            <p>{{ modalProduct?.description }}</p>
+
+            <button class="btn btn-secondary mt-2" (click)="closeModal()">
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </dialog>
+
+      <section id="similar-products" class="mt-5">
+        <h3>Similar Products</h3>
+        <div
+          id="similar-products-list"
+          class="d-flex flex-column flex-md-row justify-content-start align-items-start gap-3 flex-wrap"
+        >
+          <div
+            id="card"
+            class="d-flex justify-content-between align-items-center gap-3"
+            *ngFor="let product of similarProducts"
+            (click)="openModal(product)"
+          >
+            <img src="https://placehold.co/150x100" alt="product" />
+            <div
+              id="card-text"
+              class="d-flex flex-column justify-content-between align-items-start text-nowrap"
+            >
+              <p>{{ product.name }}</p>
+              <div id="stars">
+                <i
+                  *ngFor="
+                    let starClass of generateStarClassArray(product.rating)
+                  "
+                  [class]="starClass"
+                ></i>
+              </div>
+              <p>$ {{ product.price }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews" class="mt-5">
+        <h3>Reviews</h3>
+        <div id="reviews-list" class="d-flex flex-column gap-3">
+          <div
+            id="review-card"
+            class="d-flex flex-column flex-lg-row justify-content-between align-items-start gap-3"
+            *ngFor="let review of reviews"
+          >
+            <img
+              src="https://placehold.co/50x50"
+              alt="user"
+              class="col-1 rounded-circle"
+            />
+            <div
+              id="review-data"
+              class="col-3 d-flex flex-column justify-content-between text-nowrap"
+            >
+              <div>{{ review.name }}</div>
+              <div>{{ review.date }}</div>
+              <div id="stars">
+                <i
+                  *ngFor="
+                    let starClass of generateStarClassArray(product.rating)
+                  "
+                  [class]="starClass"
+                ></i>
+              </div>
+            </div>
+
+            <p id="review-opinion" class="col-8">{{ review.opinion }}</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer class="bg-secondary-subtle mt-5">
+  <div class="container text-center py-5">
+    <div class="mb-4 d-flex justify-content-center gap-4 fs-4">
+      <a href="#" class="text-dark"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="text-dark"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="text-dark"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="text-dark"><i class="fab fa-youtube"></i></a>
+    </div>
+
+    <p class="text-muted small mb-1">
+      1717 Calle Ficticia, Ciudad Ejemplo, CP 12345, España
+    </p>
+
+    <p class="text-muted small mb-0">
+      © 2025 Tu Empresa. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>

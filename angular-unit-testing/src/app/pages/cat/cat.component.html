@@ -1,0 +1,35 @@
+<h1>Gatos</h1>
+
+<div class="facts">
+  <input
+    type="text"
+    placeholder="Ingresa un número"
+    [(ngModel)]="factsLength"
+  />
+  <input type="text" placeholder="Ingresa un número" [(ngModel)]="factsLimit" />
+  <button id="factBtn" (click)="getFacts()">Obtener datos curiosos</button>
+
+  <div class="facts-list">
+    <div *ngFor="let fact of facts" class="fact-content">
+      <p class="fact">{{ fact.fact }}</p>
+      <span class="fact-length">Nº palabras: {{ fact.length }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="breeds" style="margin-top: 2rem">
+  <input
+    type="text"
+    placeholder="Ingresa un número"
+    [(ngModel)]="factsLength"
+  />
+  <input type="text" placeholder="Ingresa un número" [(ngModel)]="factsLimit" />
+  <button id="breedBtn" (click)="getBreeds()">Obtener razas</button>
+
+  <div class="breeds-list">
+    <app-breed-card
+      *ngFor="let breed of breeds"
+      [breed]="breed"
+    ></app-breed-card>
+  </div>
+</div>
